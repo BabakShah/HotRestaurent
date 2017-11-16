@@ -16,16 +16,23 @@
 <body>
 
     <header>
-      <h1>Welcome to Hot Restaurant</h1>
+      <h1><i class = "fa fa-fire"></i> Welcome to Hot Restaurant</h1>
       <h2>We only have 5 tables! Book your seat before they all are gone!</h2>
 
       <div class="buttons">
-        <btn>View Tables</btn>
-        <btn>Make Reservation</btn>
+        <a href ="/tables" class = "btn btn-primary"> <i class="fa fa-table" aria-hidden="true"></i> View Tables</a>
+        <a href ="/reserve" class = "btn btn-danger"> <i class="fa fa-list" aria-hidden="true"></i> Make Reservation</a>
       </div>
 
     </header>
 
+    <footer>
+
+        <a href="/api/tables">API Table Link</a>
+        <p> | </p>
+        <a href="/api/waitlist">API Wait List</a>
+
+    </footer>
 
 </body>
 </html>
