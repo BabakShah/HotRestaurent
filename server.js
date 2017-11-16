@@ -49,26 +49,28 @@ app.get("/reserve", function(req, res) {
 
 
 
-
 app.post("/api/reservations", function(req, res) {
   // req.body hosts is equal to the JSON post sent from the user
   // This works because of our body-parser middleware
   var newreservation = req.body;
 
- console.log(newreservation);
+  console.log(newreservation);
 
- if (reservations.length === 5) {
+  if (reservations.length < 5) {
     reservations.push(newreservation);
+      // We then display the JSON to the users
+    res.json(true);
   }
-  waitlist.push(newreservation);
+  else {
+    waitlist.push(newreservation);
+    res.json(false);
+  }
 
- // We then add the json the user sent to the character array
+   console.log("waitlist" + waitlist.length)
+   console.log("reservations" + reservations.length)
 
 
- // We then display the JSON to the users
-  res.json(newreservation);
 });
-
 
 
 
