@@ -7,7 +7,19 @@ var path = require("path");
 var app = express();
 var PORT = 3500;
 
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
 var reservations = [ 
+  {
+    name: "dummy",
+    phoneNumber: "dumb",
+    email: "d@b.com",
+    uniqueId: "yoyo"
+  }
+];
+
+var waitlist = [ 
   {
     name: "dummy",
     phoneNumber: "dumb",
@@ -33,19 +45,28 @@ app.get("/reserve", function(req, res) {
   res.sendFile(path.join(__dirname, "reserve.html"));
 });
 
-app.post("/api/new", function(req, res) {
+
+
+app.post("/api/reservations", function(req, res) {
   // req.body hosts is equal to the JSON post sent from the user
   // This works because of our body-parser middleware
   var newreservation = req.body;
 
   console.log(newreservation);
 
+  if (reservations.length === 5) {
+    reservations.push(newreservation);
+  }
+  waitlist.push(newreservation);
+
   // We then add the json the user sent to the character array
-  reservations.push(newreservation);
+    
 
   // We then display the JSON to the users
   res.json(newreservation);
 });
+
+
 
 // Starts the server to begin listening
 app.listen(PORT, function() {
