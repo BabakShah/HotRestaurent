@@ -10,7 +10,7 @@ var PORT = 3500;
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-var reservations = [
+var reservations = [ 
   {
     name: "dummy",
     phoneNumber: "dumb",
@@ -19,7 +19,7 @@ var reservations = [
   }
 ];
 
-var waitlist = [
+var waitlist = [ 
   {
     name: "dummy",
     phoneNumber: "dumb",
@@ -31,7 +31,6 @@ var waitlist = [
 app.get("/reservations", function(req, res) {
   res.json(reservations);
 });
-
 
 // Routes to html files
 app.get("/", function(req, res) {
@@ -46,8 +45,6 @@ app.get("/reserve", function(req, res) {
   res.sendFile(path.join(__dirname, "reserve.html"));
 });
 
-app.use("/public", express.static(__dirname + '/public'));
-
 
 
 app.post("/api/reservations", function(req, res) {
@@ -55,20 +52,23 @@ app.post("/api/reservations", function(req, res) {
   // This works because of our body-parser middleware
   var newreservation = req.body;
 
- console.log(newreservation);
+  console.log(newreservation);
 
- if (reservations.length === 5) {
+  if (reservations.length < 5) {
     reservations.push(newreservation);
+      // We then display the JSON to the users
+    res.json(true);
+  } 
+  else {
+    waitlist.push(newreservation);
+    res.json(false);
   }
-  waitlist.push(newreservation);
 
- // We then add the json the user sent to the character array
+   console.log("waitlist" + waitlist.length) 
+   console.log("reservations" + reservations.length)
 
 
- // We then display the JSON to the users
-  res.json(newreservation);
 });
-
 
 
 
