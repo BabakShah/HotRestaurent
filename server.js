@@ -23,12 +23,12 @@ app.get("/", function(req, res) {
   res.sendFile(path.join(__dirname, "home.html"));
 });
 
-app.get("/view", function(req, res) {
-  res.sendFile(path.join(__dirname, "view.html"));
+app.get("/table", function(req, res) {
+  res.sendFile(path.join(__dirname, "table.html"));
 });
 
-app.get("/make", function(req, res) {
-  res.sendFile(path.join(__dirname, "make.html"));
+app.get("/reserve", function(req, res) {
+  res.sendFile(path.join(__dirname, "reserve.html"));
 });
 
 
