@@ -28,10 +28,11 @@ var waitlist = [
   }
 ];
 
+app.use("/public", express.static(__dirname + '/public'));
+
 app.get("/reservations", function(req, res) {
   res.json(reservations);
 });
-
 
 // Routes to html files
 app.get("/", function(req, res) {
@@ -46,7 +47,6 @@ app.get("/reserve", function(req, res) {
   res.sendFile(path.join(__dirname, "reserve.html"));
 });
 
-app.use("/public", express.static(__dirname + '/public'));
 
 
 
