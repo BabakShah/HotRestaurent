@@ -1,9 +1,13 @@
 header {
 
       text-align: center;
-      font-size: 200px;
+      color : white;
 }
 
 .subTitle {
-      background-color: blue;
+      background-color: rgba(0,0,0,0.5);
+}
+
+footer a {
+  display:    inline-block;
 }
